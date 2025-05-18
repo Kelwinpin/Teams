@@ -1,9 +1,10 @@
-import { Container, TextGroup } from "./styles";
+import { Container } from "./styles";
+import Header from "@components/Header";
 
 export function Groups() {
     return (
         <Container>
-            <TextGroup>Groups</TextGroup>
+            <Header />
         </Container>
     );
 }
