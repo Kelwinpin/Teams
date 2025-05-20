@@ -2,8 +2,13 @@ import { Container, ScrollList } from "./styles";
 import Header from "@components/Header";
 import Highlight from "@components/Highlight";
 import GroupCard from "@components/GroupCard";
+import { useState } from "react";
+import { FlatList } from "react-native";
+import ListEmpty from "@components/ListEmpty";
 
 export function Groups() {
+    const [ groups, setGroups ] = useState([]);
+    
     return (
         <Container>
             <Header />
@@ -11,11 +16,14 @@ export function Groups() {
                 title="Groups"
                 subtitle="Manage your groups"
             />
-            <ScrollList>
-                <GroupCard title="Group 1" />
-                <GroupCard title="Group 1" />
-
-            </ScrollList>
+            <FlatList
+                style={{ width: '100%', height: '100%' }}
+                data={groups}
+                renderItem={({ item }) => <GroupCard title={item} />}
+                keyExtractor={(item) => item}
+                contentContainerStyle={groups.length === 0 && {flex: 1}}
+                ListEmptyComponent={() => <ListEmpty message="No groups found" />}
+            />
         </Container>
     );
 }
