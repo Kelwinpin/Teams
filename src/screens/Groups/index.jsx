@@ -5,6 +5,7 @@ import GroupCard from "@components/GroupCard";
 import { useState } from "react";
 import { FlatList } from "react-native";
 import ListEmpty from "@components/ListEmpty";
+import { Button } from "../../components/Button";
 
 export function Groups() {
     const [ groups, setGroups ] = useState([]);
@@ -24,6 +25,9 @@ export function Groups() {
                 contentContainerStyle={groups.length === 0 && {flex: 1}}
                 ListEmptyComponent={() => <ListEmpty message="No groups found" />}
             />
+            <Button onPress={() => console.log('create group')}>
+                Create Group
+            </Button>
         </Container>
     );
 }
